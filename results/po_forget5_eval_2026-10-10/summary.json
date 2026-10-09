@@ -1,0 +1,28 @@
+{
+  "sample_counts": {
+    "ape": 1200,
+    "forget": 400,
+    "retain": 400
+  },
+  "forget": {
+    "probability": 0.690437689688957,
+    "rouge_l": 0.37159222948543463,
+    "truth_ratio": 0.33016201421615343,
+    "ape": 0.0077083333333333335,
+    "exact_match": 0.021875,
+    "mink": 0.2532823853790802,
+    "mink_plus_plus": 0.506791049895936
+  },
+  "retain": {
+    "probability": 0.7871761722665734,
+    "rouge_l": 0.8545838625813477,
+    "truth_ratio": 0.6426332804910625
+  },
+  "model_utility_without_gpt": 0.7506340485341096,
+  "pending": [
+    "KS comparison with retain-only baseline",
+    "GPT-Eval",
+    "MME",
+    "POPE"
+  ]
+}

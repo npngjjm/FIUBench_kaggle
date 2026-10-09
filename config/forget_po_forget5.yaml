@@ -1,26 +1,25 @@
-# FIUBench Appendix D, Table 7: LLaVA-Phi PO on forget5.
-# Existing author configs are inherited without modification.
+# Table 7: batch 8, accumulation 16; released launcher uses one process.
+# T4 x2: 4 per GPU * 2 GPUs * 16 accumulation = 128 forget examples.
 defaults:
   - forget_lora
   - _self_
 
 model_family: llava-phi
+model_path: gray311/vlm_unlearning_ft_llava_phi_3_mini
 attn_implementation: sdpa
-# Override with the author's downloaded Stage I checkpoint path containing llava.
-model_path: ./models/final_ft_10_epochs_lr2e-05_llava-phi_full
 data_path: ./dataset/full.json
 split: forget5
 forget_loss: idk
 lr: 3e-4
-batch_size: 8
+batch_size: 4
 gradient_accumulation_steps: 16
 num_epochs: 8
 LoRA:
   r: 128
   alpha: 256
   dropout: 0.05
-
-save_dir: /kaggle/working/models/llava_phi_PO_forget5
+workers: 0
 report_to: null
-# Unspecified parameters retain repository defaults.
-# T4 precision and memory settings must be configured separately in Accelerate.
+save_dir: /kaggle/working/models/llava_phi_PO_forget5
+save_model: true
+save_steps: 8
