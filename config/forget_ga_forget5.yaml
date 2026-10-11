@@ -1,0 +1,31 @@
+# FIUBench LLaVA-Phi GA on Forget5, aligned with Table 7.
+# Kaggle T4 x2: 4 per GPU * 2 GPUs * 16 accumulation = 128 forget examples.
+defaults:
+  - forget_lora
+  - _self_
+
+model_family: llava-phi
+model_path: gray311/vlm_unlearning_ft_llava_phi_3_mini
+attn_implementation: sdpa
+data_path: ./dataset/full.json
+split: forget5
+
+forget_loss: ga
+lr: 2e-5
+batch_size: 4
+gradient_accumulation_steps: 16
+num_epochs: 8
+
+LoRA:
+  r: 128
+  alpha: 256
+  dropout: 0.05
+
+workers: 0
+report_to: null
+save_dir: /kaggle/working/models/llava_phi_GA_forget5
+save_model: true
+
+# The paper uses loss-based early stopping but does not publish its rule.
+# Save densely so steps can be compared without inventing a stopping rule.
+save_steps: 4

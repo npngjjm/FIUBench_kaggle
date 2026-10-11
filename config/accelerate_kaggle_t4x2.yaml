@@ -1,4 +1,4 @@
-# Kaggle dual-T4 setup for FIUBench PO training.
+# Kaggle dual-T4 setup for FIUBench unlearning.
 # Uses fp16 because NVIDIA T4 does not support bf16 training.
 compute_environment: LOCAL_MACHINE
 debug: false
